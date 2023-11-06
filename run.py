@@ -63,25 +63,68 @@ def send_user_item_build(selected_champion):
 
 def ask_user_to_view_player_recommendations():
     """
-    This function allows the user to submit any recommendations that they have.
+    This function allows the user to view any recommendations that players have.
     """
-    show_user_recommended_builds = SHEET.worksheet("user-recommendations").get_all_values()
+    user_recommended_builds_sheet = SHEET.worksheet("user-recommendations").get_all_values()
     user_choice = str(input("\nWould you like to view recommended builds from other players?\n").lower())
 
     if user_choice == "yes":
-        if not show_user_recommended_builds:
-            print("Unfortunetly the list is empty. Be the first one the recommend a build for others to use!")
+        if not user_recommended_builds_sheet:
+            print("\nUnfortunetly the list is empty. Be the first one the recommend a build for others to use!")
         else:
-            print("Here is the player recommended builds.")
-            print(show_user_recommended_builds)
+            print("\nHere is the player recommended builds.")
+            print(user_recommended_builds_sheet)
     else:
-        print("Not to worry. You still have an option of recommending your own build.")
+        print("\nNot to worry. You still have an option of recommending your own build.")
     
+
+def ask_user_to_submit_recommendations():
+    """
+    This function will ask user to submit any recommendations that they have.
+    """
+    user_recommended_builds_sheet = SHEET.worksheet("user-recommendations")
+    user_choice = str(input("\nWould you like to make a recommendation in builds for other players?\n").lower())
+
+    if user_choice == "yes":
+        user_recommended_item_list = []
+        champion = str(input("\nWhat champion do you have in mind? \n").capitalize())
+        user_recommended_item_list.append(champion)
+
+        first_item = str(input("\nFirst item:\n").capitalize())
+        user_recommended_item_list.append(first_item)
+
+        second_item = str(input("\nSecond item: \n").capitalize())
+        user_recommended_item_list.append(second_item)
+
+        third_item = str(input("\nThird item: \n").capitalize())
+        user_recommended_item_list.append(third_item)
+
+        fourth_item = str(input("\nFourth item: \n").capitalize())
+        user_recommended_item_list.append(fourth_item)
+
+        fifth_item = str(input("\nFifth item \n").capitalize())
+        user_recommended_item_list.append(fifth_item)
+
+        sixth_item = str(input("\nSixth item: \n").capitalize())
+        user_recommended_item_list.append(sixth_item)
+
+        seventh_item = str(input("\nSeventh item: \n").capitalize())
+        user_recommended_item_list.append(seventh_item)
+
+        user_recommended_builds_sheet.append_row(user_recommended_item_list)
+        print("\nThank you for your contribution!")
+    else:
+        print("That is alright, maybe next time!")
+
+
+
+
 
 
 def main():
     selected_champion = user_selected_champion()
     send_user_item_build(selected_champion)
     ask_user_to_view_player_recommendations()
+    ask_user_to_submit_recommendations()
 
 main()
