@@ -65,8 +65,8 @@ def ask_user_for_recommendations():
     """
     This function allows the user to submit any recommendations that they have.
     """
-    show_user_recommended_builds = SHEET.worksheet("user-recommendations").get_all_data()
-    user_choice = str(input("\n Would you like to view recommended builds from other players?\n").lower())
+    show_user_recommended_builds = SHEET.worksheet("user-recommendations").get_all_values()
+    user_choice = str(input("\nWould you like to view recommended builds from other players?\n").lower())
 
     if user_choice == "yes":
         if not show_user_recommended_builds:
