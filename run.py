@@ -26,10 +26,10 @@ def user_selected_champion():
     
     for champion in available_champions:
         print(champion)
-        
-    select_champion = str(input("\nSelect a champion: "))
-
-    return select_champion
+    while True:    
+        select_champion = str(input("\nSelect a champion: \n"))
+        return select_champion
+    
 
 def send_user_item_build(selected_champion):
     """
@@ -38,13 +38,18 @@ def send_user_item_build(selected_champion):
     """
 
     data = SHEET.worksheet("champions-builds").get_all_values()
-    
-    # Remove the header row
-    data = data[1:]
-
-    # Create a list of dictionaries, where each dictionary represents a row
-    data_dict = [dict(zip(headers, column)) for column in data]
-    print(data_dict)
+    try:
+        for list in data:
+            for look_for_champion in list:
+                if look_for_champion == selected_champion:
+                    del list[0]
+                    print(f"The best build for {selected_champion} is:\n")
+                    for items in list:
+                        print(items)
+                    return False
+    except ValueError:
+        print("Please enter a correct champions name.")
+    return True
 
 
 
