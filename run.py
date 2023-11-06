@@ -20,7 +20,7 @@ def user_selected_champion():
     and passes it on to be processed.
     """
 
-    available_champions = SHEET.worksheet("champions-builds").get_all_values()[0]
+    available_champions = SHEET.worksheet("champions-builds").col_values(1)
     print("Welcome to the most advanced never before seen League of Legends champion build selector.")
     print("Available champions to choose from are:\n")
     
@@ -31,4 +31,26 @@ def user_selected_champion():
 
     return select_champion
 
-user_selected_champion()
+def send_user_item_build(selected_champion):
+    """
+    This function will return to the user the 
+    corsponding build that suits their selected champion.
+    """
+
+    data = SHEET.worksheet("champions-builds").get_all_values()
+    
+    # Remove the header row
+    data = data[1:]
+
+    # Create a list of dictionaries, where each dictionary represents a row
+    data_dict = [dict(zip(headers, column)) for column in data]
+    print(data_dict)
+
+
+
+
+def main():
+    selected_champion = user_selected_champion()
+    send_user_item_build(selected_champion)
+
+main()
