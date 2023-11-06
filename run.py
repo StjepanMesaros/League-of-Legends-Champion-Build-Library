@@ -27,9 +27,17 @@ def user_selected_champion():
     for champion in available_champions:
         print(champion)
     while True:    
-        select_champion = str(input("\nSelect a champion: "))
-        return select_champion
-    
+        select_champion = str(input("\nSelect a champion:\n").capitalize())
+        # Check if the name was entered properly
+       
+        try:            
+            if select_champion in available_champions:
+                return select_champion
+            else:
+                print("Please enter a correct champion name.\n")
+                return user_selected_champion()
+        except ValueError as e:
+            print(f"Sorry there seems to have been an error: {e.strerror}")
 
 def send_user_item_build(selected_champion):
     """
@@ -47,9 +55,12 @@ def send_user_item_build(selected_champion):
                     for items in list:
                         print(items)
                     return False
-    except ValueError:
-        print("Please enter a correct champions name.")
-    return True
+    except ValueError as e:
+        print(f"Please accept our sincerest apolgoies it seems there has been an error, {e.errno} that says {e.strerror}. Restart the program and select another champion.")
+    
+    print("Please try again and enter the correct champion name this time\n.")
+    return user_selected_champion()
+   
 
 
 
