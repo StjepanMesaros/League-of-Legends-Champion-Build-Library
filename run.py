@@ -61,11 +61,27 @@ def send_user_item_build(selected_champion):
     return user_selected_champion()
    
 
+def ask_user_for_recommendations():
+    """
+    This function allows the user to submit any recommendations that they have.
+    """
+    show_user_recommended_builds = SHEET.worksheet("user-recommendations").get_all_data()
+    user_choice = str(input("\n Would you like to view recommended builds from other players?\n").lower())
 
+    if user_choice == "yes":
+        if not show_user_recommended_builds:
+            print("Unfortunetly the list is empty. Be the first one the recommend a build for others to use!")
+        else:
+            print("Here is the player recommended builds.")
+            print(show_user_recommended_builds)
+    else:
+        print("Not to worry. You still have an option of recommending your own build.")
+    
 
 
 def main():
     selected_champion = user_selected_champion()
     send_user_item_build(selected_champion)
+    ask_user_for_recommendations()
 
 main()
