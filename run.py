@@ -61,7 +61,7 @@ def send_user_item_build(selected_champion):
     return user_selected_champion()
    
 
-def ask_user_for_recommendations():
+def ask_user_to_view_player_recommendations():
     """
     This function allows the user to submit any recommendations that they have.
     """
@@ -82,6 +82,6 @@ def ask_user_for_recommendations():
 def main():
     selected_champion = user_selected_champion()
     send_user_item_build(selected_champion)
-    ask_user_for_recommendations()
+    ask_user_to_view_player_recommendations()
 
 main()
