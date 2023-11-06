@@ -27,7 +27,7 @@ def user_selected_champion():
     for champion in available_champions:
         print(champion)
     while True:    
-        select_champion = str(input("\nSelect a champion: \n"))
+        select_champion = str(input("\nSelect a champion: "))
         return select_champion
     
 
@@ -43,7 +43,7 @@ def send_user_item_build(selected_champion):
             for look_for_champion in list:
                 if look_for_champion == selected_champion:
                     del list[0]
-                    print(f"The best build for {selected_champion} is:\n")
+                    print(f"\nThe best build for {selected_champion} is:\n")
                     for items in list:
                         print(items)
                     return False
