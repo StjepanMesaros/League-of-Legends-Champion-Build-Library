@@ -36,7 +36,7 @@ def user_selected_champion():
             print(Fore.YELLOW + "Looking for your build...")
             return select_champion
         else:
-            print(Fore.YELLOW + f"Sorry please enter only one of the available champions exactly as they are written.")
+            print(Fore.YELLOW + "Sorry please enter only one of the available champions exactly as they are written.")
 
 def send_user_item_build(selected_champion):
     """
