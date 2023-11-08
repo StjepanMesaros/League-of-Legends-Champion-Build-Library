@@ -75,18 +75,18 @@ If they choose not to then the program will say goodbye to them and end the prog
 
 - Champion Build - the user gets an item build list for a selected champion.
 <p align="center">
-<img src="readme-assets/images/final-rules.png" width="600px" height="400">
+<img src="readme-assets/images/champion_chosen.png" width="600px" height="400">
 </p>
 
 - Other Players Recommendations - the user gets an option to see other players recommendations.
 
 <p align="center">
-<img src="readme-assets/images/view_recommended_builds.png" width="600px" height="400">
+<img src="readme-assets/images/view_recommended_builds.png" width="400px" height="100">
 </p>
 
 - Submitting Recommendation - the user gets an option of making their own submission for a player build.
 <p align="center">
-<img src="readme-assets/images/ask_user_to_give_recommendation.png" width="400px" height="400">
+<img src="readme-assets/images/ask_user_to_give_recommendation.png" width="400px" height="100">
 </p>
 
 - User Input - the user will be asked to make their own recommendation and if they choose to make their own recommendation then they can start inputing their own champion and item names.
@@ -130,7 +130,9 @@ If they choose not to then the program will say goodbye to them and end the prog
 # Issues and Bugs
  - Error message line too long
     - I fixed the error by splitting the string into two lines
- - 
+ - Not showing all user recommended builds from google sheets
+    - I fixed this by removing the return value from inside the for loop to outside of it
+
 
 
 
