@@ -145,7 +145,7 @@ If they choose not to then the program will say goodbye to them and end the prog
 The [Pycodestyle Validator](https://pypi.org/project/pycodestyle/) and [Python Code Checker](https://extendsclass.com/python-tester.html) were used to check my code for syntax errors in this project.
 
 <p align="center">
-<img src="readme-assets/images/validator_test.png" width="500px" height="100">
+<img src="readme-assets/images/validator_test.png">
 </p>
 
 - Manually tested user inputs by purposefully inputing incorrect data to confirm error messages where capturing wrong inputs
