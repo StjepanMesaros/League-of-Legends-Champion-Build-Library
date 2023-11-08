@@ -17,6 +17,28 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('LeagueOfLegends_ChampionBuildLibrary')
 
+print("""
+  _                                     
+ | |                                    
+ | |     ___  __ _  __ _ _   _  ___     
+ | |    / _ \/ _` |/ _` | | | |/ _ \    
+ | |___|  __/ (_| | (_| | |_| |  __/    
+ |______\___|\__,_|\__, |\__,_|\___|    
+  / __ \ / _|       __/ |               
+ | |  | | |_       |___/                
+ | |  | |  _|                           
+ | |__| | |                             
+  \____/|_|                       _     
+ | |                             | |    
+ | |     ___  __ _  ___ _ __   __| |___ 
+ | |    / _ \/ _` |/ _ \ '_ \ / _` / __|
+ | |___|  __/ (_| |  __/ | | | (_| \__ \\
+ |______\___|\__, |\___|_| |_|\__,_|___/
+              __/ |                     
+             |___/                      
+
+""")
+
 def user_selected_champion():
     """
     This function gets the user inputed champion 
