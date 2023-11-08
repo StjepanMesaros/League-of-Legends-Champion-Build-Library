@@ -172,6 +172,6 @@ The [Pycodestyle Validator](https://pypi.org/project/pycodestyle/) and [Python C
 # Credits
 
 - [Code Institute](https://codeinstitute.net/) for the mock terminal for the deploy to a live site.
-- [Hangman-youtube-tutorial Kite](https://www.youtube.com/watch?v=m4nEnsavl6w) inspiration on how to build a hangman game. 
-- [ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Standard&t=Hangman) for creating word art for game title.
+- [Iris Smok](hthttps://github.com/Iris-Smok) inspiration on how to write a readme file and continuous support throughout the project. 
+- [ASCII Art Generator](https://patorjk.com/software/taag/#p=testall&f=Small&t=League%0A%0AOf%0A%0ALegends) for creating word art for title.
  
