@@ -132,9 +132,8 @@ If they choose not to then the program will say goodbye to them and end the prog
     - I fixed the error by splitting the string into two lines
  - Not showing all user recommended builds from google sheets
     - I fixed this by removing the return value from inside the for loop to outside of it
-
-
-
+ - Lots of white space between lines
+    - I fixed this with the help of pycodestyle - pinpointed the location and deleted
 
 # Technologies Used
 - Languages 
