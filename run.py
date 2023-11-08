@@ -18,48 +18,44 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('LeagueOfLegends_ChampionBuildLibrary')
 
 print("""
-  _                                     
- | |                                    
- | |     ___  __ _  __ _ _   _  ___     
- | |    / _ \/ _` |/ _` | | | |/ _ \    
- | |___|  __/ (_| | (_| | |_| |  __/    
- |______\___|\__,_|\__, |\__,_|\___|    
-  / __ \ / _|       __/ |               
- | |  | | |_       |___/                
- | |  | |  _|                           
- | |__| | |                             
-  \____/|_|                       _     
- | |                             | |    
- | |     ___  __ _  ___ _ __   __| |___ 
- | |    / _ \/ _` |/ _ \ '_ \ / _` / __|
- | |___|  __/ (_| |  __/ | | | (_| \__ \\
- |______\___|\__, |\___|_| |_|\__,_|___/
-              __/ |                     
-             |___/                      
+                 _
+                | |
+                | |     ___  __ _  __ _ _   _  ___
+                | |    / _ \/ _` |/ _` | | | |/ _ \\
+                | |___|  __/ (_| | (_| | |_| |  __/
+                |______\___|\__,_|\__, |\__,_|\___|
+                / __ \ / _|        _/  |
+                | |  | | |_       |___/
+                | |  | |  _|
+                | |__| | |
+                \____/ |_|                       _
+                | |                             | |
+                | |     ___  __ _  ___ _ __   __| |___
+                | |    / _ \/ _` |/ _ \ '_ \ / _` / __|
+                | |___|  __/ (_| |  __/ | | | (_| \__ \\
+                |______\___|\__, |\___|_| |_|\__,_|___/
+                             _/  |
+                            |___/
 
 """)
 
 
 def user_selected_champion():
     """
-    This function gets the user inputed champion 
+    This function gets the user inputed champion
     and passes it on to be processed.
     """
 
     available_champions = SHEET.worksheet("champions-builds").col_values(1)
-    print(Fore.YELLOW +
-          """
-          Welcome to the most advanced never before seen
-          League of Legends champion build selector.
-          Available champions to choose from are:\n
-          """
-          )
+    print(Fore.YELLOW + "Welcome to the most advanced never before seen")
+    print(Fore.YELLOW + "League of Legends champion build selector.")
+    print(Fore.YELLOW + "Available champions to choose from are:\n")
 
     for champion in available_champions:
         print(champion)
-    while True:    
+    while True:
         select_champion = str(input(Fore.MAGENTA + "\nSelect a champion (e.g. Zed):\n").capitalize())
-        # Check if the name was entered properly          
+        # Check if the name was entered properly
         if select_champion in available_champions:
             print(Fore.YELLOW + "Looking for your build...")
             return select_champion
@@ -69,26 +65,23 @@ def user_selected_champion():
 
 def send_user_item_build(selected_champion):
     """
-    This function will return to the user the 
+    This function will return to the user the
     corsponding build that suits their selected champion.
     """
 
     data = SHEET.worksheet("champions-builds")
-    
     for list in data.get_all_values():
         if selected_champion in list:
             del list[0]
             print(f"\nThe best build for {selected_champion} is:\n")
             for items in list:
                 print(items)
-        
         elif selected_champion not in list:
             pass
-        
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
-            
-        
+
+
 def ask_user_to_view_player_recommendations():
     """
     This function allows the user to view any recommendations that players have.
@@ -107,14 +100,14 @@ def ask_user_to_view_player_recommendations():
                 for items in user_recommended_builds_sheet:
                     print(items)
                     return False
-                
+
         elif user_choice == "no":
             print(Fore.YELLOW + "\nNot to worry. You still have an option of recommending your own build.")
             return False
-        
+
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
-    
+
 
 def ask_user_to_submit_recommendations():
     """
@@ -153,13 +146,10 @@ def ask_user_to_submit_recommendations():
 
             user_recommended_builds_sheet.append_row(user_recommended_item_list)
             print(Fore.YELLOW + "\nThank you for your contribution!")
-
             return False
-        
         elif user_choice == "yes":
             print("That is alright, maybe next time!")
             return False
-        
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
 
@@ -172,5 +162,3 @@ def main():
 
 
 main()
-
-
