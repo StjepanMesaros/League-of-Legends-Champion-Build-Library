@@ -99,7 +99,7 @@ def ask_user_to_view_player_recommendations():
                 print(Fore.YELLOW + "\nHere is the player recommended builds.")
                 for items in user_recommended_builds_sheet:
                     print(items)
-                    return False
+                return False
 
         elif user_choice == "no":
             print(Fore.YELLOW + "\nNot to worry. You still have an option of recommending your own build.")
@@ -117,9 +117,9 @@ def ask_user_to_submit_recommendations():
     user_recommended_builds_sheet = SHEET.worksheet("user-recommendations")
     while True:
         user_choice = str(input(Fore.MAGENTA + "\nWould you like to make a recommendation in builds for other players? (Yes/No)\n").lower())
+        user_recommended_item_list = []
 
         if user_choice == "yes":
-            user_recommended_item_list = []
             champion = str(input(Fore.MAGENTA + "\nWhat champion do you have in mind? \n").capitalize())
             user_recommended_item_list.append(champion)
 
@@ -144,6 +144,7 @@ def ask_user_to_submit_recommendations():
             seventh_item = str(input(Fore.MAGENTA + "\nSeventh item: \n").capitalize())
             user_recommended_item_list.append(seventh_item)
 
+            print(user_recommended_item_list)
             user_recommended_builds_sheet.append_row(user_recommended_item_list)
             print(Fore.YELLOW + "\nThank you for your contribution!")
             return False
