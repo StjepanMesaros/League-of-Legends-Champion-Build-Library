@@ -144,7 +144,7 @@ def ask_user_to_submit_recommendations():
             seventh_item = str(input(Fore.MAGENTA + "\nSeventh item: \n").capitalize())
             user_recommended_item_list.append(seventh_item)
 
-            print(user_recommended_item_list)
+            print(Fore.YELLOW + f"Your recommended builds is following: {user_recommended_item_list}\n")
             user_recommended_builds_sheet.append_row(user_recommended_item_list)
             print(Fore.YELLOW + "\nThank you for your contribution!")
             return False
