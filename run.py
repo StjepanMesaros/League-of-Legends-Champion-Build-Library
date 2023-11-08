@@ -39,6 +39,7 @@ print("""
 
 """)
 
+
 def user_selected_champion():
     """
     This function gets the user inputed champion 
@@ -46,9 +47,14 @@ def user_selected_champion():
     """
 
     available_champions = SHEET.worksheet("champions-builds").col_values(1)
-    print(Fore.YELLOW + "Welcome to the most advanced never before seen League of Legends champion build selector.")
-    print(Fore.YELLOW + "Available champions to choose from are:\n")
-    
+    print(Fore.YELLOW +
+          """
+          Welcome to the most advanced never before seen
+          League of Legends champion build selector.
+          Available champions to choose from are:\n
+          """
+          )
+
     for champion in available_champions:
         print(champion)
     while True:    
@@ -59,6 +65,7 @@ def user_selected_champion():
             return select_champion
         else:
             print(Fore.YELLOW + "Sorry please enter only one of the available champions exactly as they are written.")
+
 
 def send_user_item_build(selected_champion):
     """
@@ -74,14 +81,14 @@ def send_user_item_build(selected_champion):
             print(f"\nThe best build for {selected_champion} is:\n")
             for items in list:
                 print(items)
+        
         elif selected_champion not in list:
             pass
+        
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
             
         
-
-
 def ask_user_to_view_player_recommendations():
     """
     This function allows the user to view any recommendations that players have.
@@ -100,9 +107,11 @@ def ask_user_to_view_player_recommendations():
                 for items in user_recommended_builds_sheet:
                     print(items)
                     return False
+                
         elif user_choice == "no":
             print(Fore.YELLOW + "\nNot to worry. You still have an option of recommending your own build.")
             return False
+        
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
     
@@ -111,6 +120,7 @@ def ask_user_to_submit_recommendations():
     """
     This function will ask user to submit any recommendations that they have.
     """
+
     user_recommended_builds_sheet = SHEET.worksheet("user-recommendations")
     while True:
         user_choice = str(input(Fore.MAGENTA + "\nWould you like to make a recommendation in builds for other players? (Yes/No)\n").lower())
@@ -153,10 +163,14 @@ def ask_user_to_submit_recommendations():
         else:
             print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
 
+
 def main():
     selected_champion = user_selected_champion()
     send_user_item_build(selected_champion)
     ask_user_to_view_player_recommendations()
     ask_user_to_submit_recommendations()
 
+
 main()
+
+
