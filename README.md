@@ -1,31 +1,44 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# League of Legends Champion Build Library
 
-Welcome USER_NAME,
+League of Legends Champion Build Library is a Python terminal game, which runs in the Code Institute mock terminal Heroku. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Users can choose a champion out of a list of supported ones which will then give them a list of items to use in the game. They can also view what other players have suggested to use and they can even make their own suggestions if they wish to do so.
 
-## Reminders
+<p align="center">
+<img src="" width="800" height="100%">
+</p>
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+You can view the live site [here](https://league-of-legend-build-library-eae49736bdd9.herokuapp.com/)
 
-## Creating the Heroku app
+# How to use
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The program will give the user a list of supported champions.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The user will then put in the name of the champion that they wish to see the build for.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+Upon receiving the list of items the user will be prompted with an option of viewing the list of items that other players have suggested to use.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+If the user has answered yes to that then they will see a list printed in the terminal for them.
 
-Connect your GitHub repository and deploy as normal.
+If they choose to view it or not either way they will be prompted with another question that will ask them if they want to make their own suggestion.
 
-## Constraints
+If they wish to do so then they will be asked to input the name of the champion they want to make a suggestion for and each item separetly.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+If they choose not to then the program will say goodbye to them and end the program.
 
------
-Happy coding!
+
+# User Stories 
+
+- As a user I want to easily understand the purpose of the program
+- As a user I want to learn something new
+- As a user I want to be able to make a suggestion
+- As a user I want to be able to view other players suggestions 
+
+# Design
+
+## Flowchart:
+
+<p align="center">
+<img src="readme-assets/images/flowchart.png" width="1000px" height="1000">
+</p>
+
