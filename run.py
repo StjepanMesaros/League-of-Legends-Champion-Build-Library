@@ -147,7 +147,7 @@ def ask_user_to_submit_recommendations():
             user_recommended_builds_sheet.append_row(user_recommended_item_list)
             print(Fore.YELLOW + "\nThank you for your contribution!")
             return False
-        elif user_choice == "yes":
+        elif user_choice == "no":
             print("That is alright, maybe next time!")
             return False
         else:
