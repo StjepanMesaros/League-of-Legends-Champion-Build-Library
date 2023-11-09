@@ -2,20 +2,21 @@ import gspread
 from google.oauth2.service_account import Credentials
 import colorama
 from colorama import Fore, Back, Style
+
 colorama.init(autoreset=True)
 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+    "https://www.googleapis.com/auth/drive",
+]
 
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('LeagueOfLegends_ChampionBuildLibrary')
+SHEET = GSPREAD_CLIENT.open("LeagueOfLegends_ChampionBuildLibrary")
 
 
 def title():
@@ -62,13 +63,18 @@ def user_selected_champion():
     for champion in available_champions:
         print(champion)
     while True:
-        select_champion = str(input(Fore.MAGENTA + "\nSelect a champion (e.g. Zed):\n").capitalize())
+        select_champion = str(
+            input(Fore.MAGENTA + "\nSelect a champion (e.g. Zed):\n").capitalize()
+        )
         # Check if the name was entered properly
         if select_champion in available_champions:
             print(Fore.YELLOW + "Looking for your build...")
             return select_champion
         else:
-            print(Fore.YELLOW + "Sorry please enter only one of the available champions exactly as they are written.")
+            print(
+                Fore.YELLOW
+                + "Sorry please enter only one of the available champions exactly as they are written."
+            )
 
 
 def send_user_item_build(selected_champion):
@@ -87,21 +93,34 @@ def send_user_item_build(selected_champion):
         elif selected_champion not in list:
             pass
         else:
-            print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
+            print(
+                Fore.YELLOW
+                + "Please accept our sincerest aplogoies, there seems to have come to an issue."
+            )
 
 
 def ask_user_to_view_player_recommendations():
     """
     This function allows the user to view any recommendations that players have.
     """
-    user_recommended_builds_sheet = SHEET.worksheet("user-recommendations").get_all_values()
+    user_recommended_builds_sheet = SHEET.worksheet(
+        "user-recommendations"
+    ).get_all_values()
 
     while True:
-        user_choice = str(input(Fore.MAGENTA + "\nWould you like to view recommended builds from other players? (Yes/No)\n").lower())
+        user_choice = str(
+            input(
+                Fore.MAGENTA
+                + "\nWould you like to view recommended builds from other players? (Yes/No)\n"
+            ).lower()
+        )
 
         if user_choice == "yes":
             if not user_recommended_builds_sheet:
-                print(Fore.YELLOW + "\nUnfortunetly the list is empty. Be the first one the recommend a build for others to use!")
+                print(
+                    Fore.YELLOW
+                    + "\nUnfortunetly the list is empty. Be the first one the recommend a build for others to use!"
+                )
                 return False
             else:
                 print(Fore.YELLOW + "\nHere is the player recommended builds.")
@@ -110,11 +129,17 @@ def ask_user_to_view_player_recommendations():
                 return False
 
         elif user_choice == "no":
-            print(Fore.YELLOW + "\nNot to worry. You still have an option of recommending your own build.")
+            print(
+                Fore.YELLOW
+                + "\nNot to worry. You still have an option of recommending your own build."
+            )
             return False
 
         else:
-            print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
+            print(
+                Fore.YELLOW
+                + "Please accept our sincerest aplogoies, there seems to have come to an issue."
+            )
 
 
 def ask_user_to_submit_recommendations():
@@ -124,11 +149,20 @@ def ask_user_to_submit_recommendations():
 
     user_recommended_builds_sheet = SHEET.worksheet("user-recommendations")
     while True:
-        user_choice = str(input(Fore.MAGENTA + "\nWould you like to make a recommendation in builds for other players? (Yes/No)\n").lower())
+        user_choice = str(
+            input(
+                Fore.MAGENTA
+                + "\nWould you like to make a recommendation in builds for other players? (Yes/No)\n"
+            ).lower()
+        )
         user_recommended_item_list = []
 
         if user_choice == "yes":
-            champion = str(input(Fore.MAGENTA + "\nWhat champion do you have in mind? \n").capitalize())
+            champion = str(
+                input(
+                    Fore.MAGENTA + "\nWhat champion do you have in mind? \n"
+                ).capitalize()
+            )
             user_recommended_item_list.append(champion)
 
             first_item = str(input(Fore.MAGENTA + "\nFirst item:\n").capitalize())
@@ -152,7 +186,10 @@ def ask_user_to_submit_recommendations():
             seventh_item = str(input(Fore.MAGENTA + "\nSeventh item: \n").capitalize())
             user_recommended_item_list.append(seventh_item)
 
-            print(Fore.YELLOW + f"Your recommended builds is following: {user_recommended_item_list}\n")
+            print(
+                Fore.YELLOW
+                + f"Your recommended builds is following: {user_recommended_item_list}\n"
+            )
             user_recommended_builds_sheet.append_row(user_recommended_item_list)
             print(Fore.YELLOW + "\nThank you for your contribution!")
             return False
@@ -160,7 +197,10 @@ def ask_user_to_submit_recommendations():
             print("That is alright, maybe next time!")
             return False
         else:
-            print(Fore.YELLOW + "Please accept our sincerest aplogoies, there seems to have come to an issue.")
+            print(
+                Fore.YELLOW
+                + "Please accept our sincerest aplogoies, there seems to have come to an issue."
+            )
 
 
 def main():
