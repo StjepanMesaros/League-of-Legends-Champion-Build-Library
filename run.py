@@ -17,7 +17,13 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('LeagueOfLegends_ChampionBuildLibrary')
 
-print("""
+
+def title():
+    """
+    Display the title
+    """
+    print(
+        """
                  _
                 | |
                 | |     ___  __ _  __ _ _   _  ___
@@ -36,8 +42,8 @@ print("""
                 |______\___|\__, |\___|_| |_|\__,_|___/
                              _/  |
                             |___/
-
-""")
+        """
+    )
 
 
 def user_selected_champion():
@@ -47,6 +53,8 @@ def user_selected_champion():
     """
 
     available_champions = SHEET.worksheet("champions-builds").col_values(1)
+    title()
+
     print(Fore.YELLOW + "Welcome to the most advanced never before seen")
     print(Fore.YELLOW + "League of Legends champion build selector.")
     print(Fore.YELLOW + "Available champions to choose from are:\n")
