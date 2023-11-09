@@ -42,30 +42,6 @@ If they choose not to then the program will say goodbye to them and end the prog
 <img src="readme-assets/images/flowchart.png" width="1000px" height="1000">
 </p>
 
-## Wireframes
-
-## 1
-
-<p align="center">
-<img src="" width="700px" height="500">
-</p>
-
-## 2
-
-<p align="center">
-<img src="" width="700px" height="500">
-</p>
-
-## 3
-<p align="center">
-<img src="" width="700px" height="500">
-</p>
-
-## 4
-<p align="center">
-<img src="" width="700px" height="500">
-</p>
-
 # Features
 
 - Welcome Screen - the user gets presented with a list of available champions where they have to choose one.
